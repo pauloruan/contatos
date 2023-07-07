@@ -1,0 +1,32 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Plácido Castelo",
+      "email": "olo@kowdaehu.gg",
+      "tel": "(01) 2345-6789",
+      "cel": "(01) 2345-6789",
+      "age": 50,
+      "birth_date": "11/11/1973",
+      "street": "Av. Alberto Craveiro",
+      "number": 2901,
+      "neighborhood": "Castelão",
+      "city": "Fortaleza",
+      "state": "CE"
+    },
+    {
+      "id": 2,
+      "name": "José do Rego Maciel",
+      "email": "ku@si.ws",
+      "tel": "(01) 2345-6789",
+      "cel": "(01) 2345-6789",
+      "age": 51,
+      "birth_date": "04/06/1972",
+      "street": "Av. Beberibe",
+      "number": 1285,
+      "neighborhood": "Arruda",
+      "city": "Recife",
+      "state": "PE"
+    }
+  ]
+}
