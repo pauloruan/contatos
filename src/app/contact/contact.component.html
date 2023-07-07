@@ -1,0 +1,206 @@
+<div class="container-fluid p-0">
+  <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">Contatos</a>
+      <form class="d-flex">
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-target="#contactModal"
+          data-bs-toggle="modal"
+          (click)="modalEdit()"
+        >
+          Adicionar Contato
+        </button>
+      </form>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <table>
+        <tr>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Data de Nascimento</th>
+          <th>E-mail</th>
+          <th>Telefone</th>
+          <th>Celular</th>
+          <th>Opções</th>
+        </tr>
+        <tr *ngFor="let contact of data; let i = index">
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.age }}</td>
+          <td>{{ contact.birth_date }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.tel }}</td>
+          <td>{{ contact.cel }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-target="#contactModal"
+              data-bs-toggle="modal"
+              style="margin: 2px"
+              (click)="edit(i, contact)"
+            >
+              Editar
+            </button>
+            <button
+              class="btn btn-danger"
+              type="button"
+              style="margin: 2px"
+              (click)="deleteContact(i, contact)"
+            >
+              Deletar
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="contactModal"
+  tabindex="-1"
+  aria-labelledby="contactModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="contactModalLabel">
+          {{ isEdit ? "Editar Contato" : "Adicionar Contato" }}
+        </h4>
+        <button
+          type="button"
+          class="btn-close close-btn-modal"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-box">
+          <form
+            [formGroup]="contactForm"
+            (ngSubmit)="
+              isEdit ? updateContact(contactForm) : sendData(contactForm)
+            "
+          >
+            <div class="form-group">
+              <label>Nome</label>
+              <input
+                type="text"
+                placeholder="Nome Sobrenome"
+                class="form-control mt-3 mb-3"
+                formControlName="name"
+              />
+            </div>
+            <div class="form-group">
+              <label>email</label>
+              <input
+                type="email"
+                placeholder="email@valido.com"
+                class="form-control mt-3 mb-3"
+                formControlName="email"
+              />
+            </div>
+            <div class="form-group">
+              <label>Telefone</label>
+              <input
+                type="tel"
+                placeholder="(00) 0000-0000"
+                class="form-control mt-3 mb-3"
+                formControlName="tel"
+              />
+            </div>
+            <div class="form-group">
+              <label>Celular</label>
+              <input
+                type="tel"
+                placeholder="(00) 0000-0000"
+                class="form-control mt-3 mb-3"
+                formControlName="cel"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Idade</label>
+              <input
+                type="number"
+                placeholder="21"
+                class="form-control mt-3 mb-3"
+                formControlName="age"
+              />
+            </div>
+            <div class="form-group">
+              <label>Data de Nascimento</label>
+              <input
+                type="date"
+                placeholder="dd/mm/aaaa"
+                class="form-control mt-3 mb-3"
+                formControlName="birth_date"
+              />
+            </div>
+            <div class="form-group">
+              <label>Logradouro</label>
+              <input
+                type="text"
+                placeholder="Rua, Avenida, etc."
+                class="form-control mt-3 mb-3"
+                formControlName="street"
+              />
+            </div>
+            <div class="form-group">
+              <label>Número</label>
+              <input
+                type="number"
+                placeholder="123"
+                class="form-control mt-3 mb-3"
+                formControlName="number"
+              />
+            </div>
+            <div class="form-group">
+              <label>Bairro</label>
+              <input
+                type="text"
+                placeholder="Bairro"
+                class="form-control mt-3 mb-3"
+                formControlName="neighborhood"
+              />
+            </div>
+            <div class="form-group">
+              <label>Cidade</label>
+              <input
+                type="text"
+                placeholder="Cidade"
+                class="form-control mt-3 mb-3"
+                formControlName="city"
+              />
+            </div>
+            <div class="form-group">
+              <label>Estado</label>
+              <input
+                type="text"
+                placeholder="Estado"
+                class="form-control mt-3 mb-3"
+                formControlName="state"
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              {{ isEdit ? "Editar" : "Adicionar" }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
